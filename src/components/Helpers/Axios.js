@@ -46,13 +46,11 @@ Axios.interceptors.response.use(
         });
         if (success.status === 200) {
           let newToken = Cookies.get("jwt-cookie-expense");
-          //MAKE THE ORIGINAL AJAX CALL
           request.headers.Authorization = `Bearer ${newToken}`;
           let success = await Axios(request);
           return success;
         }
       } catch (e) {
-        //send ajax call back to refresh token route
         return Promise.reject(error);
       }
     }

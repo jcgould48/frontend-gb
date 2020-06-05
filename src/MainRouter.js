@@ -15,7 +15,7 @@ export default class MainRouter extends Component {
       {({ dispatch }) => {
         return (
           <>
-          <Navbar/>
+          <Navbar dispatch={dispatch}/>
 
           <Switch>
             <Route exact path="/sign-up" component={Signup} />
@@ -23,7 +23,6 @@ export default class MainRouter extends Component {
             <Route exact path="/" component={Home} />
           </Switch>
         </>
-
         )
       }}
       </Consumer>  

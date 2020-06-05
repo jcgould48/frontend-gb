@@ -12,18 +12,18 @@ export const createUser = async (userInfo) => {
   }
 };
 
-export const login = async (userInfo) => {
-  try {
-    let success = await Axios.post("/api/users/login", userInfo, {
-      withCredentials: true,
-    });
+// export const login = async (userInfo) => {
+//   try {
+//     let success = await Axios.post("/api/users/login", userInfo, {
+//       withCredentials: true,
+//     });
 
-    return success.data;
-  } catch (e) {
-    console.log(e);
-    throw Error(e.response.data.message);
-  }
-};
+//     return success.data;
+//   } catch (e) {
+//     console.log(e);
+//     throw Error(e.response.data.message);
+//   }
+// };
 
 export const isAuthenticated = () => {
   if (typeof window == "undefined") return false;

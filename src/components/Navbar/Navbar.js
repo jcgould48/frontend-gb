@@ -10,9 +10,6 @@ import "./Navbar.css";
 import { Consumer } from "../Context/Context";
 
 export default class Navbar extends Component {
-  //checkIfTokenExist
-  //if token exist
-  //call dispatch
 
   componentDidMount() {
     let jwtToken = isAuthenticated();

@@ -68,22 +68,6 @@ export default class Signup extends Component {
           noError: null,
         },
       },
-      wins: {
-        name: "wins",
-        value: [],
-        error: {
-          message: "",
-          noError: null,
-        },
-      },
-      losses: {
-        name: "losses",
-        value: [],
-        error: {
-          message: "",
-          noError: null,
-        },
-      },
     },
     validate: {
       usernameError: {
@@ -115,76 +99,9 @@ export default class Signup extends Component {
     }
   }
 
-  onChangePassword = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-
-    if (this.state.password.length >= 8) {
-      this.setState({
-        error: null,
-      });
-
-      let validatedPassword = validator.matches(
-        this.state.password,
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
-      );
-      if (!validatedPassword) {
-        this.setState({
-          error:
-            "must contain 1 uppercase, 1 lowercase, and a special character",
-        });
-      } else {
-        this.setState({
-          error: null,
-        });
-      }
-    } else {
-      toast.error("Password must be at least 8 characters", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-
-  onChangeEmail = (e) => {
-    let isEmail = validator.isEmail(this.state.email);
-
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-
-    if (!isEmail) {
-      toast.error("Please enter an valid email", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    } else {
-      this.setState({
-        emailError: null,
-      });
-    }
-  };
-
   checkInputValidation = (errorState, inputName, inputValue) => {
     switch (inputName) {
       case "username":
-        //check if username has a length 1 to 20
-        //it is only character and digits -> hamster, hamster007, apple123
-        // if there an error
-        //console.log("cannot contain special characters and minimum of 2 and maximum of 20 characters";)
-        // else
-        // return null
 
         let validatedUsername;
         validatedUsername = validator.matches(
@@ -198,7 +115,7 @@ export default class Signup extends Component {
             "Cannot contain special characters and minimum of 2 and maximum of 20 characters";
           return errorState;
         } else {
-          //HOW TO TURN OFF THE ERROR MESSAGE????
+         
           errorState.usernameError.noError = validatedUsername;
           errorState.usernameError.message = "";
           return errorState;
@@ -237,6 +154,38 @@ export default class Signup extends Component {
           errorState.passwordError.message = "";
           return errorState;
         }
+        case "state":
+
+        let validatedUsername;
+        validatedUsername = validator.isAlpha(inputValue);
+
+        if (!validatedUsername) {
+          errorState.usernameError.noError = validatedUsername;
+          errorState.usernameError.message =
+            "Cannot contain special characters and minimum of 2 and maximum of 20 characters";
+          return errorState;
+        } else {
+          errorState.usernameError.noError = validatedUsername;
+          errorState.usernameError.message = "";
+          return errorState;
+        }
+
+        case "city":
+
+        let validatedUsername;
+        validatedUsername = validator.isAlpha(inputValue);
+
+        if (!validatedUsername) {
+          errorState.usernameError.noError = validatedUsername;
+          errorState.usernameError.message =
+            "Cannot contain special characters and minimum of 2 and maximum of 20 characters";
+          return errorState;
+        } else {
+          errorState.usernameError.noError = validatedUsername;
+          errorState.usernameError.message = "";
+          return errorState;
+        }
+
 
       default:
         return errorState;
@@ -244,15 +193,6 @@ export default class Signup extends Component {
   };
 
   onChange = (event) => {
-    //1. we need to grab the value of our current state
-    //2. but right now our state is in an object. how do we know what to put?
-
-    //spread the state of the formSetting Object
-    //set the value of the state object with event.target.value
-    //
-
-    //use checkInputValidation to verify if input is good
-
     let inputForm = {
       ...this.state.formSetting,
     };
@@ -268,11 +208,15 @@ export default class Signup extends Component {
     inputForm["username"].error = isValidatedCheck.usernameError;
     inputForm["email"].error = isValidatedCheck.emailError;
     inputForm["password"].error = isValidatedCheck.passwordError;
+    inputForm["state"].error = isValidatedCheck.stateError;
+    inputForm["city"].error = isValidatedCheck.cityError;
 
     if (
       inputForm["email"].error.noError === false ||
       inputForm["password"].error.noError === false ||
-      inputForm["username"].error.noError === false
+      inputForm["username"].error.noError === false ||
+      inputForm["state"].error.noError === false ||
+      inputForm["city"].error.noError === false
     ) {
       this.setState({
         canSubmit: true,
@@ -283,7 +227,9 @@ export default class Signup extends Component {
     if (
       inputForm["email"].error.noError === true &&
       inputForm["password"].error.noError === true &&
-      inputForm["username"].error.noError === true
+      inputForm["username"].error.noError === true &&
+      inputForm["state"].error.noError === true &&
+      inputForm["city"].error.noError === true
     ) {
       this.setState({
         canSubmit: false,
@@ -301,13 +247,15 @@ export default class Signup extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password, username } = this.state.formSetting;
+    const { email, password, username, state, city } = this.state.formSetting;
 
     try {
       await createUser({
         email: email.value,
         password: password.value,
         username: username.value,
+        state: state.value,
+        city: city.value,
       });
 
       let inputForm = {
@@ -317,8 +265,10 @@ export default class Signup extends Component {
       inputForm["email"].value = "";
       inputForm["password"].value = "";
       inputForm["username"].value = "";
+      inputForm["state"].value = "";
+      inputForm["city"].value = "";
 
-      toast.success(`🦄 Login now!`, {
+      toast.success(`Login now!`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -385,7 +335,6 @@ export default class Signup extends Component {
               />
             );
           })}
-
           <ButtonGroup
             buttonStyle="form-button"
             title="Sign up"

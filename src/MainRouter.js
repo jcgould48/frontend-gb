@@ -16,7 +16,7 @@ export default class MainRouter extends Component {
               {/* <Navbar/> */}
 
               <Switch>
-                {/* <Route exact path="/sign-up" component={Signup} /> */}
+                <Route exact path="/sign-up" component={Signup} />
                 {/* <Route exact path="/sign-in" component={Signin} /> */}
                 <Route exact path="/" component={Home} />
                 

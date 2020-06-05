@@ -7,9 +7,9 @@ import "./Signup.css";
 import InputGroup from "../shared/InputGroup";
 import ButtonGroup from "../shared/ButtonGroup";
 
-// import { createUser } from "../Helpers/AuthHelpers";
+import { createUser } from "../Helpers/AuthHelpers";
 
-// import { isAuthenticated } from "../Helpers/AuthHelpers";
+import { isAuthenticated } from "../Helpers/AuthHelpers";
 
 export default class Signup extends Component {
   state = {
@@ -156,33 +156,33 @@ export default class Signup extends Component {
         }
         case "state":
 
-        let validatedUsername;
-        validatedUsername = validator.isAlpha(inputValue);
+        let validatedState;
+        validatedState = validator.isAlpha(inputValue);
 
-        if (!validatedUsername) {
-          errorState.usernameError.noError = validatedUsername;
-          errorState.usernameError.message =
+        if (!validatedState) {
+          errorState.stateError.noError = validatedState;
+          errorState.stateError.message =
             "Cannot contain special characters and minimum of 2 and maximum of 20 characters";
           return errorState;
         } else {
-          errorState.usernameError.noError = validatedUsername;
-          errorState.usernameError.message = "";
+          errorState.stateError.noError = validatedState;
+          errorState.stateError.message = "";
           return errorState;
         }
 
         case "city":
 
-        let validatedUsername;
-        validatedUsername = validator.isAlpha(inputValue);
+        let validatedCity;
+        validatedCity = validator.isAlpha(inputValue);
 
-        if (!validatedUsername) {
-          errorState.usernameError.noError = validatedUsername;
-          errorState.usernameError.message =
+        if (!validatedCity) {
+          errorState.cityError.noError = validatedCity;
+          errorState.cityError.message =
             "Cannot contain special characters and minimum of 2 and maximum of 20 characters";
           return errorState;
         } else {
-          errorState.usernameError.noError = validatedUsername;
-          errorState.usernameError.message = "";
+          errorState.cityError.noError = validatedCity;
+          errorState.cityError.message = "";
           return errorState;
         }
 

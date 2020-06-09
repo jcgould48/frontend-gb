@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputGroup from '../shared/InputGroup'
 import ButtonGroup from '../shared/ButtonGroup'
-import {loginUser,isAuthenticated} from '../Tic-Tac-Toe/TicTacToeHelpers/AuthHelpers'
+import {loginUser,isAuthenticated} from '../Helpers/AuthHelpers'
 import {Consumer} from '../Context/Context'
 import './Signin.css'
 
@@ -32,10 +32,6 @@ export default class SignIn extends Component {
             }
         },
         validate: {
-            usernameError: {
-            noError: null,
-            message: "",
-            },
             emailError: {
             noError: null,
             message: "",
@@ -151,7 +147,7 @@ export default class SignIn extends Component {
                 ...this.state,
                 formSetting: inputForm,
                 });
-                this.props.history.push('/expense')
+                // this.props.history.push('/expense')
 
 
         } catch (error) {

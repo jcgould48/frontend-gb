@@ -128,6 +128,9 @@ export default class SignIn extends Component {
             }
             inputForm['email'].value=''
             inputForm['password'].value=''
+            //console.log(dispatch);
+            console.log(success);
+            
             dispatch({
                 type:"SUCCESS_SIGNED_IN",
                 payload:success.user
@@ -143,11 +146,11 @@ export default class SignIn extends Component {
                 progress: undefined,
             })
         
-                this.setState({
-                ...this.state,
-                formSetting: inputForm,
-                });
-                // this.props.history.push('/expense')
+                // this.setState({
+                // ...this.state,
+                // formSetting: inputForm,
+                // });
+                this.props.history.push('/')
 
 
         } catch (error) {
@@ -195,7 +198,11 @@ export default class SignIn extends Component {
                       const {
                         formSetting: { name, placeholder, value, error },
                       } = element;
+                      console.log(error);
+                      
                       return (
+                          
+                          
                         <InputGroup
                           key={name}
                           name={name}

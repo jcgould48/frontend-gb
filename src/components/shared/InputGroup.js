@@ -16,6 +16,7 @@ export default function InputGroup({
         type={type}
         name={name}
         className={classnames("form-style", {
+          
           isvalid: error.noError === false ? true : false,
         })}
         placeholder={placeholder}

@@ -39,7 +39,8 @@ export const isAuthenticated = () => {
 
 export const setUserAuth = (jwtToken, dispatch) => {
   let decodedToken = jwt_decode(jwtToken);
-
+  console.log(decodedToken);
+  
   dispatch({
     type: "SUCCESS_SIGNED_IN",
     payload: decodedToken,

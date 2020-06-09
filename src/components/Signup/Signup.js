@@ -60,14 +60,14 @@ export default class Signup extends Component {
           noError: null,
         },
       },
-      userCreated: {
-        name: "userCreated",
-        value: new Date(),
-        error: {
-          message: "",
-          noError: null,
-        },
-      },
+      // userCreated: {
+      //   name: "userCreated",
+      //   value: new Date(),
+      //   error: {
+      //     message: "",
+      //     noError: null,
+      //   },
+      // },
     },
     validate: {
       usernameError: {

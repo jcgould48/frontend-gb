@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import AuthNavLinks from "../shared/InputGroup";
 import UnAuthNavLinks from "./UnAuthNavLinks";
-import { isAuthenticated, setUserAuth } from "../Tic-Tac-Toe/TicTacToeHelpers/AuthHelpers";
+import { isAuthenticated, setUserAuth } from "../Helpers/AuthHelpers";
 
 import "./Navbar.css";
 
@@ -13,7 +13,8 @@ export default class Navbar extends Component {
 
   componentDidMount() {
     let jwtToken = isAuthenticated();
-
+    console.log(jwtToken);
+    
     if (jwtToken) {
       setUserAuth(jwtToken, this.props.dispatch);
     }

@@ -3,6 +3,8 @@ export const Context = React.createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "SUCCESS_SIGNED_IN":
+      console.log(action);
+      
       return {
         ...state,
         isAuth:{

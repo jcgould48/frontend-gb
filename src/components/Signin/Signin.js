@@ -18,7 +18,7 @@ export default class SignIn extends Component {
                 value:'',
                 error:{
                     message:'',
-                    noError:null
+                    noError:null,
                 }
             },
             password:{
@@ -27,7 +27,7 @@ export default class SignIn extends Component {
                 value:'',
                 error:{
                     message:'',
-                    noError:null
+                    noError:null,
                 }
             }
         },
@@ -53,8 +53,8 @@ export default class SignIn extends Component {
                 let validatedEmail = validator.isEmail(inputValue)
                 if(!validatedEmail){
                     errorState.emailError.noError = validatedEmail
-                    errorState.emailError.message = "inproper credentials"
-                    return errorState
+                    errorState.emailError.message = "Improper credentials"
+                    return errorState;
                 }else{
                     errorState.emailError.noError = validatedEmail
                     errorState.emailError.message = ""

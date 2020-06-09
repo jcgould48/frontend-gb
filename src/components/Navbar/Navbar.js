@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import AuthNavLinks from "./AuthNavLinks";
+import AuthNavLinks from "../shared/InputGroup";
 import UnAuthNavLinks from "./UnAuthNavLinks";
-import { isAuthenticated, setUserAuth } from "../Helpers/AuthHelpers";
+import { isAuthenticated, setUserAuth } from "../TicTacToeHelpers/AuthHelpers";
 
 import "./Navbar.css";
 

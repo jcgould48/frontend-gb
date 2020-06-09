@@ -45,13 +45,24 @@ export const setUserAuth = (jwtToken, dispatch) => {
     payload: decodedToken,
   });
 };
-
-export const logout = async () => {
+export const loginUser = async (userInfo)=>{
   try {
-    await Axios.get("/api/users/logout");
-    Cookies.remove("jwt-cookie-expense");
-    Cookies.remove("jwt-cookie-refresh-expense");
+      let success = await Axios.post('/api/users/login',userInfo,{
+          withCredentials:true
+      })
+
+      return success.data
+
   } catch (e) {
-    throw Error(e.response.data.message);
+      throw Error(e.response.data.message)
   }
-};
+}
+  export const logout = async () => {
+    try {
+      await Axios.get("/api/users/logout");
+      Cookies.remove("jwt-cookie-expense");
+      Cookies.remove("jwt-cookie-refresh-expense");
+    } catch (e) {
+      throw Error(e.response.data.message);
+    }
+  }

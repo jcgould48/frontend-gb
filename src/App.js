@@ -2,21 +2,19 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Spinner from "./components/Spinner/Spinner";
 import MainRouter from "./MainRouter";
+import { Provider } from "./components/Context/Context";
 
 export default class App extends Component {
-  // componentDidMount() {
-  //   console.log(document.cookie);
-  // }
 
   render() {
     return (
-
+      <Provider>
         <Router>
           <React.Suspense fallback={<Spinner />}>
             <MainRouter />
           </React.Suspense>
         </Router>
-       
+      </Provider>
     );
   }
 }

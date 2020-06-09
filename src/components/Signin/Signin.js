@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputGroup from '../shared/InputGroup'
 import ButtonGroup from '../shared/ButtonGroup'
-import {loginUser,isAuthenticated} from '../TicTacToeHelpers/AuthHelpers'
+import {loginUser,isAuthenticated} from '../Tic-Tac-Toe/TicTacToeHelpers/AuthHelpers'
 import {Consumer} from '../Context/Context'
 import './Signin.css'
 

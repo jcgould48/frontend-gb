@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {calculateWinner} from '../TicTacToeHelpers/CalculateWinner'
+import {calculateWinner} from '../Tic-Tac-Toe/TicTacToeHelpers/CalculateWinner'
 import Board from '../Board/Board'
 
-import './Game.css'
+import '../Game/Game.css'
 
 export default class Game extends Component {
     constructor(props){

@@ -5,7 +5,7 @@ export default class Home extends Component {
         return (
             <div>
                 <h1>Welcome to Git Buzzed!</h1>
-                <h3>Get you drinks ready!</h3>
+                <h3>Get your drinks ready!</h3>
             </div>
         )
     }

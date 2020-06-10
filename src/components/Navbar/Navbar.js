@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import AuthNavLinks from "./AuthNavLinks";
 import UnAuthNavLinks from "./UnAuthNavLinks";
+//import EditUser from '../EditUser/EditUser'
 import { isAuthenticated, setUserAuth } from "../Helpers/AuthHelpers";
 
 import "./Navbar.css";
@@ -46,7 +47,9 @@ export default class Navbar extends Component {
                   <UnAuthNavLinks />
                 )}
               </nav>
+              
             </header>
+
           );
         }}
       </Consumer>

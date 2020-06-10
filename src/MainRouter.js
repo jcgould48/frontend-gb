@@ -38,6 +38,7 @@ export default class MainRouter extends Component {
             {/* <PrivateRoute exact path="/beersweeper" component={Beersweeper} /> */}
             
           </Switch>
+         
         </>
         )
       }}

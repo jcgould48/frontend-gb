@@ -29,7 +29,8 @@ componentDidMount(){
       <ul className="nav__ul">
         <li>
           <NavLink
-            to="/user-profile"
+          
+            to="/edit-user"
             className="navbar"
             activeStyle={{ fontWeight: "bold" }}
             activeClassName="selected"

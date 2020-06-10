@@ -10,7 +10,7 @@ const Signup = React.lazy(() => import("./components/Signup/Signup"));
 const EditUser = React.lazy(()=>import("./components/EditUser/EditUser"))
 const WaitRoom = React.lazy(() => import("./components/WaitRoom/WaitRoom"));
 
-const Beersweeper = React.lazy(() => import("./components/BeerSweeper/Minesweeper"));
+const Beersweeper = React.lazy(() => import("./components/BeerSweeper/Beersweeper"));
 const Game = React.lazy(()=>import("./components/Tic-Tac-Toe/Game/Game"))
 
 

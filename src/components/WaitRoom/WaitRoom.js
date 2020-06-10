@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Context} from '../Context/Context'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import minesweeper from '../../images/minesweeper.jpeg'
@@ -7,6 +8,8 @@ import pictionary from '../../images/pictionary.jpeg'
 import './WaitRoom.css'
 
 export default class WaitRoom extends Component {
+    static contextType = Context;
+    
     render() {
         return (
             <div>
@@ -23,14 +26,15 @@ export default class WaitRoom extends Component {
                             <Card.Text>
                             It's simple...you lose, you drink.
                             </Card.Text>
-                            {/* <NavLink
-                                to="/beersweeper"
+                            <NavLink
+                                to="/tictactoe"
                                 className="minesweeper"
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
                             >
-                                {this.props.username}
-                            </NavLink> */}
+                                {/* {this.props.username} */}
+                                Tic Tac Toe
+                            </NavLink>
                         </Card.Body>
                         </Card>
                     </div>

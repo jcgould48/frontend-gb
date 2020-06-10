@@ -8,7 +8,10 @@ import "./Navbar.css";
 
 class AuthNavLinks extends Component {
   static contextType = Context;
-
+componentDidMount(){
+  console.log(this.props);
+  
+}
   logout = async () => {
     try {
       await logout();

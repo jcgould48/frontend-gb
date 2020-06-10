@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {calculateWinner} from '../Tic-Tac-Toe/TicTacToeHelpers/CalculateWinner'
+import {calculateWinner} from '../Tic-Tac-Toe-Helpers/CalculateWinner'
 import Board from '../Board/Board'
 
 import '../Game/Game.css'

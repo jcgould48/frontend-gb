@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputGroup from '../shared/InputGroup'
 import ButtonGroup from '../shared/ButtonGroup'
-import {loginUser,isAuthenticated} from '../Helpers/AuthHelpers'
+import {loginUser,isAuthenticated} from '../Tic-Tac-Toe/TicTacToeHelpers/AuthHelpers'
 import {Consumer} from '../Context/Context'
 import './Signin.css'
 
@@ -18,7 +18,7 @@ export default class SignIn extends Component {
                 value:'',
                 error:{
                     message:'',
-                    noError:null,
+                    noError:null
                 }
             },
             password:{
@@ -27,11 +27,15 @@ export default class SignIn extends Component {
                 value:'',
                 error:{
                     message:'',
-                    noError:null,
+                    noError:null
                 }
             }
         },
         validate: {
+            usernameError: {
+            noError: null,
+            message: "",
+            },
             emailError: {
             noError: null,
             message: "",
@@ -53,8 +57,8 @@ export default class SignIn extends Component {
                 let validatedEmail = validator.isEmail(inputValue)
                 if(!validatedEmail){
                     errorState.emailError.noError = validatedEmail
-                    errorState.emailError.message = "Improper credentials"
-                    return errorState;
+                    errorState.emailError.message = "improper credentials"
+                    return errorState
                 }else{
                     errorState.emailError.noError = validatedEmail
                     errorState.emailError.message = ""
@@ -147,7 +151,7 @@ export default class SignIn extends Component {
                 ...this.state,
                 formSetting: inputForm,
                 });
-                // this.props.history.push('/expense')
+                this.props.history.push('/wait-room')
 
 
         } catch (error) {

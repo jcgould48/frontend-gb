@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Board from "./components/Board/Board"
-import BoardHead from "./components/BoardHead/BoardHead"
+import Board from "./Board/Board"
+import BoardHead from "./BoardHead/BoardHead"
 
 
 class Minesweeper extends Component {

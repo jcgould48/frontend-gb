@@ -3,11 +3,11 @@ import validator from "validator";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Signup.css";
+//import "./Signup.css";
 import InputGroup from "../shared/InputGroup";
 import ButtonGroup from "../shared/ButtonGroup";
 
-import { createUser } from "../Helpers/AuthHelpers";
+import { editUser } from "../Helpers/AuthHelpers";
 
 import { isAuthenticated } from "../Helpers/AuthHelpers";
 
@@ -129,24 +129,24 @@ export default class Signup extends Component {
           errorState.emailError.message = "";
           return errorState;
         }
-      case "password":
-        let validatedPassword = true;
-        //let validatedPassword
-        // validatedPassword = validator.matches(
-        //   inputValue,
-        //   "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
-        // );
+    //   case "password":
+    //     let validatedPassword = true;
+    //     //let validatedPassword
+    //     // validatedPassword = validator.matches(
+    //     //   inputValue,
+    //     //   "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+    //     // );
 
-        if (!validatedPassword) {
-          errorState.passwordError.noError = validatedPassword;
-          errorState.passwordError.message =
-            "Minimum eight characters, at least one letter, one number and one special character";
-          return errorState;
-        } else {
-          errorState.passwordError.noError = validatedPassword;
-          errorState.passwordError.message = "";
-          return errorState;
-        }
+    //     if (!validatedPassword) {
+    //       errorState.passwordError.noError = validatedPassword;
+    //       errorState.passwordError.message =
+    //         "Minimum eight characters, at least one letter, one number and one special character";
+    //       return errorState;
+    //     } else {
+    //       errorState.passwordError.noError = validatedPassword;
+    //       errorState.passwordError.message = "";
+    //       return errorState;
+    //     }
         case "state":
 
         let validatedState;
@@ -200,13 +200,13 @@ export default class Signup extends Component {
 
     inputForm["username"].error = isValidatedCheck.usernameError;
     inputForm["email"].error = isValidatedCheck.emailError;
-    inputForm["password"].error = isValidatedCheck.passwordError;
+    //inputForm["password"].error = isValidatedCheck.passwordError;
     inputForm["state"].error = isValidatedCheck.stateError;
     inputForm["city"].error = isValidatedCheck.cityError;
 
     if (
       inputForm["email"].error.noError === false ||
-      inputForm["password"].error.noError === false ||
+      //inputForm["password"].error.noError === false ||
       inputForm["username"].error.noError === false ||
       inputForm["state"].error.noError === false ||
       inputForm["city"].error.noError === false
@@ -219,7 +219,7 @@ export default class Signup extends Component {
 
     if (
       inputForm["email"].error.noError === true &&
-      inputForm["password"].error.noError === true &&
+      //inputForm["password"].error.noError === true &&
       inputForm["username"].error.noError === true &&
       inputForm["state"].error.noError === true &&
       inputForm["city"].error.noError === true
@@ -243,7 +243,7 @@ export default class Signup extends Component {
     const { email, password, username, state, city } = this.state.formSetting;
 
     try {
-      await createUser({
+      await editUser({
         email: email.value,
         password: password.value,
         username: username.value,
@@ -338,12 +338,3 @@ export default class Signup extends Component {
     );
   }
 }
-
-/*
-  1. OnChange is where we check the input value
-
-  2. Conditionally render error message
-
-  3. So in onChange if there's an error -> output the error
-
-*/

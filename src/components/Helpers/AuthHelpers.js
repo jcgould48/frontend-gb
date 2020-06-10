@@ -56,3 +56,17 @@ export const logout = async () => {
     throw Error(e.response.data.message);
   }
 };
+
+export const editUser= async (id)=>{
+  try {
+    let success = await Axios.put(`/api/users/update-user/${id}`,{
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + isAuthenticated(),
+      }},)
+    return success
+  } catch (error) {
+    throw Error(error.response.data.message)
+  }
+}

@@ -13,7 +13,8 @@ export default class Navbar extends Component {
 
   componentDidMount() {
     let jwtToken = isAuthenticated();
-
+    console.log(jwtToken);
+    
     if (jwtToken) {
       setUserAuth(jwtToken, this.props.dispatch);
     }

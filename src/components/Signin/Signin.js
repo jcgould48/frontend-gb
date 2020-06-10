@@ -132,6 +132,9 @@ export default class SignIn extends Component {
             }
             inputForm['email'].value=''
             inputForm['password'].value=''
+            //console.log(dispatch);
+            console.log(success);
+            
             dispatch({
                 type:"SUCCESS_SIGNED_IN",
                 payload:success.user
@@ -199,7 +202,11 @@ export default class SignIn extends Component {
                       const {
                         formSetting: { name, placeholder, value, error },
                       } = element;
+                      console.log(error);
+                      
                       return (
+                          
+                          
                         <InputGroup
                           key={name}
                           name={name}

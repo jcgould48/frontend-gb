@@ -53,7 +53,7 @@ export default class Game extends Component {
         });
         let status;
         if (winner) {
-            status = 'Winner is ' + winner;
+            status = `Winner is ${winner} loser drink up `;
         } else {
             status = 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O');
         }

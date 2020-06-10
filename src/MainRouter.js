@@ -23,10 +23,11 @@ export default class MainRouter extends Component {
             <Route exact path="/sign-up" component={Signup} />
             <Route exact path="/sign-in" component={Signin} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/wait-room" component={WaitRoom} />
-            <Route exact path="/beersweeper" component={Beersweeper} />
+            {/* <Route exact path="/wait-room" component={WaitRoom} />
+            <Route exact path="/beersweeper" component={Beersweeper} /> */}
            
-            {/* <PrivateRoute exact path="/wait-room" component={WaitRoom} /> */}
+            <PrivateRoute exact path="/wait-room" component={WaitRoom} />
+            <PrivateRoute exact path="/wait-room" component={Beersweeper} />
             
           </Switch>
         </>

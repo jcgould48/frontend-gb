@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Board from "./Board/Board"
 import BoardHead from "./BoardHead/BoardHead"
-
+import "./Minesweeper.css"
 
 class Minesweeper extends Component {
   constructor (){

@@ -21,7 +21,7 @@ const Cell = (props) => {
             className="cell open"
             onContextMenu={e => {
               e.preventDefault();
-              props.flag(props.data);
+              // props.flag(props.data);
             }}
             onClick={() => props.open(props.data)}
           />
@@ -39,26 +39,28 @@ const Cell = (props) => {
           </div>
         );
       }
-    } else if (props.data.hasFlag) {
-      return (
-        <div
-          className="cell open-flag"
-          onContextMenu={e => {
-            e.preventDefault();
-            props.flag(props.data);
-          }}
-          onClick={() => props.open(props.data)}
-        >
-          <span class="iconify" data-icon="dashicons:flag" data-inline="false"></span>
-        </div>
-      );
-    } else {
+    } 
+    // else if (props.data.hasFlag) {
+    //   return (
+    //     <div
+    //       className="cell open-flag"
+    //       onContextMenu={e => {
+    //         e.preventDefault();
+    //         props.flag(props.data);
+    //       }}
+    //       onClick={() => props.open(props.data)}
+    //     >
+    //       <span class="iconify" data-icon="dashicons:flag" data-inline="false"></span>
+    //     </div>
+    //   );
+    // } 
+    else {
       return (
         <div
           className="cell"
           onContextMenu={e => {
             e.preventDefault();
-            props.flag(props.data);
+            // props.flag(props.data);
           }}
           onClick={() => props.open(props.data)}
         />

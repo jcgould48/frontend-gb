@@ -44,7 +44,7 @@ export default class WaitRoom extends Component {
                             </Card.Text>
                              <NavLink
                                 to="/beersweeper"
-                                className="minesweeper"
+                                className="beersweeper"
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
                             >

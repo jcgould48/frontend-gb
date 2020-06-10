@@ -1,20 +1,80 @@
 import React, { Component } from 'react'
-import {Context} from '../Context/Context'
+// import {Context} from '../Context/Context'
+import {ScoreContext} from '../Context/ScoreContext'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
+import ButtonGroup from "../shared/ButtonGroup"
+import {updateScore} from "../Helpers/Api"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import minesweeper from '../../images/minesweeper.jpeg'
 import tictactoe from '../../images/tictactoe.jpg'
 import pictionary from '../../images/pictionary.jpeg'
 import './WaitRoom.css'
 
-export default class WaitRoom extends Component {
-    static contextType = Context;
+ class WaitRoom extends Component {
+    static contextType = ScoreContext;
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       formSetting: {
+    //         wins,
+    //         losses,
+    //           error: {
+    //             message: "",
+    //             noError: "",
+    //           },
+    //         }
+    //     }
+    // }
+
+    handleWin = async (e) => {
+        e.preventDefault();
     
+        try {
+          const {
+            wins,
+            losses
+          } = this.state.formSetting;
+    
+          let scoreObj = {
+            wins: wins.value,
+            losses: losses.value,
+          };
+    
+          let success = await updateScore(scoreObj);
+    
+          this.context.expenseDispatch({
+            type: "UPDATE_SCORE",
+            payload: success,
+          });
+    
+        } catch (e) {
+          toast.error(e.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      };
+
     render() {
+        const { scoreArray } = this.context;
         return (
             <div>
                 <div>
                     <h2>Player 1:</h2>
+                    <h1>{scoreArray.wins}</h1>
+                    <form className="score-btn" onSubmit={this.handleWin}>
+                    <ButtonGroup
+                    buttonStyle="form-button"
+                    title="+"
+                    />
+                </form>
                     <h2>Player 2:</h2>
                 </div>
                 <div className="cards-container">
@@ -74,3 +134,5 @@ export default class WaitRoom extends Component {
         )
     }
 }
+
+export default WaitRoom;

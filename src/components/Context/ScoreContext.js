@@ -22,7 +22,7 @@ const reducer = (state, action) => {
           expenseArray: [...state.expenseArray],
         };
 
-    case "UPDATED_SCORE":
+    case "UPDATE_SCORE":
       state.expenseArray.forEach((item, index) => {
         if (item._id === action.payload._id) {
           state.expenseArray.splice(index, 1, action.payload);
@@ -37,10 +37,10 @@ const reducer = (state, action) => {
   }
 };
 
-export class ExpenseProvider extends Component {
+export class ScoreProvider extends Component {
   state = {
-    expenseArray: [],
-    expenseDispatch: (action) => {
+    scoreArray: [],
+    scoreDispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
   };
@@ -48,11 +48,12 @@ export class ExpenseProvider extends Component {
   async componentDidMount() {
     try {
       let results = await getScores();
-
-      this.state.expenseDispatch({
+      console.log('22222', results)
+      this.state.scoreDispatch({
         type: "GET_SCORES",
         payload: results.scores, //check this
       });
+     
     } catch (e) {
       console.log(e);
     }

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
 import InputGroup from '../shared/InputGroup'
+import ButtonGroup from '../shared/ButtonGroup'
 import {editUser} from '../Helpers/AuthHelpers'
 export default class EditUser extends Component {
     static contextType = Context;
@@ -142,6 +143,87 @@ export default class EditUser extends Component {
             return errorState;
         }
     };
+
+    onChange = (event)=>{
+        let inputForm = {
+            ...this.state.formSetting,
+            };
+        console.log(inputForm)
+        
+        inputForm[event.target.name].value = event.target.value;
+        
+        let isValidatedCheck = this.checkInputValidation(
+            this.state.validate,
+            event.target.name,
+            event.target.value
+        );
+        inputForm["email"].error = isValidatedCheck.emailError;
+        inputForm["username"].error = isValidatedCheck.usernameError;
+        
+        
+        if(inputForm['email'].error.noError === false ||inputForm['username'].error.noError===false){
+            this.setState({
+                canSubmit:true
+            })
+            return;
+            }
+            if(inputForm["username"].error.noError===true&&inputForm['email'].error.noError===true){
+                this.setState({
+                canSubmit:false
+                })
+                return;
+            }else{
+            this.setState({
+                ...this.state,
+                formSetting: inputForm,
+                })
+            }
+    };
+
+    onSubmit = async(e) => {
+        e.preventDefault();
+    
+        let userID = this.context.isAuth.user._id
+        const {email,username}=this.state.formSetting
+    
+        try {
+            await editUser(userID)
+    
+            let inputForm={
+                ...this.state.formSetting
+            }
+    
+            inputForm['email'].value=''
+            inputForm['username'].value=''
+    
+            toast.success('Updated User',{
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
+    
+            this.setState({
+            ...this.state,
+            formSetting: inputForm,
+            });
+        } catch (error) {
+            toast.error(e.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
+            };
+
+
     
     // constructor(props){
         //     super(props)
@@ -153,10 +235,52 @@ export default class EditUser extends Component {
             
         }
         render() {
+            const { formSetting,canSubmit } = this.state;
+            //loop through the formSetting object
+            let inputArray = [];
+            for (let key in formSetting) {
+            inputArray.push({
+            formSetting: formSetting[key],
+            });
+             }
             return (
-                <div>
-                {this.props.username}
-            </div>
+                <div className="signup-container">
+                    <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    />
+                    <h1>Edit User</h1>
+                    <form onSubmit={this.onSubmit}>
+                        {inputArray.map((element) => {
+                            const {
+                                formSetting: { name, placeholder, value, error },
+                                } = element;
+                                return (
+                                    <InputGroup
+                                    key={name}
+                                    name={name}
+                                    placeholder={placeholder}
+                                    onChange={this.onChange}
+                                    value={value}
+                                    error={error}
+                                    type={name}
+                                    />
+                                );
+                            })}
+                        <ButtonGroup
+                        buttonStyle="form-button"
+                        disabled={canSubmit}
+                        title='Sign up'
+                        />
+        </form>
+        </div>
         )
     }
 }

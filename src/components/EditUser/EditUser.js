@@ -255,7 +255,7 @@ export default class EditUser extends Component {
                 draggable: true,
                 progress: undefined,
                 })
-            this.history.push('/')
+            this.props.history.push('/')
         } catch (error) {
             toast.error(e.message, {
                 position: "top-center",

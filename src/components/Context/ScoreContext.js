@@ -49,18 +49,18 @@ export class ScoreProvider extends Component {
   };
 //This is Where I need tpo import id but how?
   async componentDidMount() {
-    try {
-        console.log("dododoododododo")
-      let results = await getScores();
-      console.log('22222', results)
-      this.state.scoreDispatch({
-        type: "GET_SCORES",
-        payload: results.scores, //check this
-      });
+    // try {
+    //     console.log("dododoododododo")
+    //   let results = await getScores();
+    //   console.log('22222', results)
+    //   this.state.scoreDispatch({
+    //     type: "GET_SCORES",
+    //     payload: results.scores, //check this
+    //   });
      
-    } catch (e) {
-      console.log(e);
-    }
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
 
   render() {

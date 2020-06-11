@@ -4,7 +4,7 @@ import {Context} from '../Context/Context'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import ButtonGroup from "../shared/ButtonGroup"
-import {updateScore} from "../Helpers/Api"
+import {getScores} from "../Helpers/Api"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import minesweeper from '../../images/minesweeper.jpeg'
@@ -15,56 +15,58 @@ import './WaitRoom.css'
 export default class WaitRoom extends Component {
     // static contextType = ScoreContext;
     static contextType = Context;
-        state = {
-            formSetting: {
-              wins,
-              losses,
-              owner
-              }
-          }
-    
+        
+    state = { 
+    formSetting: {
+      wins: null,
+        },
+      }
        
     
-    componentDidMount(){
-            
-        console.log("is this the way?" ,this.context.isAuth.user._id);
+    // componentDidMount(){
+    //       let results = this.getUserScore() 
+
+    //     console.log("is this the way?" ,results);
         
+    // }
+
+    getUserScore = async (req, res) =>{
+        let userID = this.context.isAuth.user._id
+        try{
+          let results= await getScores(userID)
+         
+
+        } catch (e) {
+              toast.error(e.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
     }
-    handleWin = async (req, res) => {
-        console.log("is this the way?22" ,this.context.isAuth.user._id);
-        // e.preventDefault();
-        // console.log("....", req.params.id)
-        // console.log("....", context.owner.id)
-        // console.log("....", o._id)
-        // try {
-        //   const {
-        //     wins,
-        //     losses
-        //   } = this.state.formSetting;
-    
-        //   let scoreObj = {
-        //     wins: wins.value,
-        //     losses: losses.value,
-        //   };
-    
-        //   let success = await updateScore(scoreObj);
-    
-        //   this.context.expenseDispatch({
-        //     type: "UPDATE_SCORE",
-        //     payload: success,
-        //   });
-    
-        // } catch (e) {
-        //   toast.error(e.message, {
-        //     position: "top-center",
-        //     autoClose: 5000,
-        //     hideProgressBar: false,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        //   });
-        // }
+}
+
+    handlePopulateScore =  async (req, res) => {
+      try{
+        let userID = this.context.isAuth.user._id
+        let results = await getScores(userID)
+        this.setState({
+          wins: results.wins
+        });
+      }catch (e) {
+          toast.error(e.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       };
 
     render() {
@@ -73,11 +75,11 @@ export default class WaitRoom extends Component {
             <div>
                 <div>
                     <h2>Player 1:</h2>
-                    {/* <h1>{scoreArray.wins}</h1> */}
+                    <h1>{this.state.wins}</h1>
                     <ButtonGroup
                     buttonStyle="form-button"
-                    title="BUTTON"
-                    onClick={this.handleWin}
+                    title="Retrieve User Score"
+                    onClick={this.handlePopulateScore}
                     />
                     <h2>Player 2:</h2>
                 </div>
@@ -139,4 +141,3 @@ export default class WaitRoom extends Component {
     }
 }
 
-// export default WaitRoom;

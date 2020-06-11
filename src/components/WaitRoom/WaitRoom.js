@@ -14,52 +14,52 @@ import './WaitRoom.css'
 
  class WaitRoom extends Component {
     static contextType = ScoreContext;
+    
     // constructor(props) {
     //     super(props);
     //     this.state = {
     //       formSetting: {
     //         wins,
     //         losses,
-    //           error: {
-    //             message: "",
-    //             noError: "",
-    //           },
+    //         owner
     //         }
     //     }
     // }
 
-    handleWin = async (e) => {
-        e.preventDefault();
+    handleWin = async (req, res) => {
+        // e.preventDefault();
+        // console.log("....", req.params.id)
+        // console.log("....", context.owner.id)
+        // console.log("....", o._id)
+        // try {
+        //   const {
+        //     wins,
+        //     losses
+        //   } = this.state.formSetting;
     
-        try {
-          const {
-            wins,
-            losses
-          } = this.state.formSetting;
+        //   let scoreObj = {
+        //     wins: wins.value,
+        //     losses: losses.value,
+        //   };
     
-          let scoreObj = {
-            wins: wins.value,
-            losses: losses.value,
-          };
+        //   let success = await updateScore(scoreObj);
     
-          let success = await updateScore(scoreObj);
+        //   this.context.expenseDispatch({
+        //     type: "UPDATE_SCORE",
+        //     payload: success,
+        //   });
     
-          this.context.expenseDispatch({
-            type: "UPDATE_SCORE",
-            payload: success,
-          });
-    
-        } catch (e) {
-          toast.error(e.message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
+        // } catch (e) {
+        //   toast.error(e.message, {
+        //     position: "top-center",
+        //     autoClose: 5000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //   });
+        // }
       };
 
     render() {
@@ -69,12 +69,11 @@ import './WaitRoom.css'
                 <div>
                     <h2>Player 1:</h2>
                     <h1>{scoreArray.wins}</h1>
-                    <form className="score-btn" onSubmit={this.handleWin}>
                     <ButtonGroup
                     buttonStyle="form-button"
-                    title="+"
+                    title="BUTTON"
+                    onClick={this.handleWin}
                     />
-                </form>
                     <h2>Player 2:</h2>
                 </div>
                 <div className="cards-container">

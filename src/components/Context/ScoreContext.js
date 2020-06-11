@@ -8,30 +8,30 @@ const reducer = (state, action) => {
     case "GET_SCORES":
       return {
         ...state,
-        expenseArray: [...action.payload],
+        scoreArray: [...action.payload],
       };
 
-      case "RESET_SCORE":
-        state.expenseArray.forEach((item, index) => {
-          if (item._id === action.payload._id) {
-            state.expenseArray.splice(index, 1, action.payload);
-          }
-        });
-        return {
-          ...state,
-          expenseArray: [...state.expenseArray],
-        };
+    //   case "RESET_SCORE":
+    //     state.expenseArray.forEach((item, index) => {
+    //       if (item._id === action.payload._id) {
+    //         state.expenseArray.splice(index, 1, action.payload);
+    //       }
+    //     });
+    //     return {
+    //       ...state,
+    //       expenseArray: [...state.expenseArray],
+    //     };
 
-    case "UPDATE_SCORE":
-      state.expenseArray.forEach((item, index) => {
-        if (item._id === action.payload._id) {
-          state.expenseArray.splice(index, 1, action.payload);
-        }
-      });
-      return {
-        ...state,
-        expenseArray: [...state.expenseArray],
-      };
+    // case "UPDATE_SCORE":
+    //   state.expenseArray.forEach((item, index) => {
+    //     if (item._id === action.payload._id) {
+    //       state.expenseArray.splice(index, 1, action.payload);
+    //     }
+    //   });
+    //   return {
+    //     ...state,
+    //     expenseArray: [...state.expenseArray],
+    //   };
     default:
       return state;
   }
@@ -39,15 +39,19 @@ const reducer = (state, action) => {
 
 export class ScoreProvider extends Component {
   state = {
-    scoreArray: [],
+        wins,
+        losses,
+        owner,
+        
     scoreDispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
   };
-
+//This is Where I need tpo import id but how?
   async componentDidMount() {
     try {
-      let results = await getScores();
+        console.log("dododoododododo",id)
+      let results = await getScores(id);
       console.log('22222', results)
       this.state.scoreDispatch({
         type: "GET_SCORES",

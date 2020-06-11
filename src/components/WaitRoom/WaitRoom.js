@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import {Context} from '../Context/Context'
-import {ScoreContext} from '../Context/ScoreContext'
+import {Context} from '../Context/Context'
+// import {ScoreContext} from '../Context/ScoreContext'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import ButtonGroup from "../shared/ButtonGroup"
@@ -12,21 +12,26 @@ import tictactoe from '../../images/tictactoe.jpg'
 import pictionary from '../../images/pictionary.jpeg'
 import './WaitRoom.css'
 
- class WaitRoom extends Component {
-    static contextType = ScoreContext;
+export default class WaitRoom extends Component {
+    // static contextType = ScoreContext;
+    static contextType = Context;
+        state = {
+            formSetting: {
+              wins,
+              losses,
+              owner
+              }
+          }
     
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       formSetting: {
-    //         wins,
-    //         losses,
-    //         owner
-    //         }
-    //     }
-    // }
-
+       
+    
+    componentDidMount(){
+            
+        console.log("is this the way?" ,this.context.isAuth.user._id);
+        
+    }
     handleWin = async (req, res) => {
+        console.log("is this the way?22" ,this.context.isAuth.user._id);
         // e.preventDefault();
         // console.log("....", req.params.id)
         // console.log("....", context.owner.id)
@@ -63,12 +68,12 @@ import './WaitRoom.css'
       };
 
     render() {
-        const { scoreArray } = this.context;
+        // const { scoreArray } = this.context;
         return (
             <div>
                 <div>
                     <h2>Player 1:</h2>
-                    <h1>{scoreArray.wins}</h1>
+                    {/* <h1>{scoreArray.wins}</h1> */}
                     <ButtonGroup
                     buttonStyle="form-button"
                     title="BUTTON"
@@ -134,4 +139,4 @@ import './WaitRoom.css'
     }
 }
 
-export default WaitRoom;
+// export default WaitRoom;

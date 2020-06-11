@@ -39,10 +39,10 @@ const reducer = (state, action) => {
 
 export class ScoreProvider extends Component {
   state = {
-        wins,
-        losses,
-        owner,
-        
+        // wins,
+        // losses,
+        // owner,
+
     scoreDispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
@@ -50,8 +50,8 @@ export class ScoreProvider extends Component {
 //This is Where I need tpo import id but how?
   async componentDidMount() {
     try {
-        console.log("dododoododododo",id)
-      let results = await getScores(id);
+        console.log("dododoododododo")
+      let results = await getScores();
       console.log('22222', results)
       this.state.scoreDispatch({
         type: "GET_SCORES",

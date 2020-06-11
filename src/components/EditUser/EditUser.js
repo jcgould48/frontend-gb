@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 import InputGroup from '../shared/InputGroup'
 import ButtonGroup from '../shared/ButtonGroup'
-import {editUser} from '../Helpers/AuthHelpers'
+import {editUser,deleteUser} from '../Helpers/AuthHelpers'
 export default class EditUser extends Component {
     static contextType = Context;
     state={
@@ -186,6 +186,7 @@ export default class EditUser extends Component {
         let userID = this.context.isAuth.user._id
         const {email,username,city,state}=this.state.formSetting
 
+        try {
         let editObj = {
             email:email.value,
             username:username.value,
@@ -193,8 +194,14 @@ export default class EditUser extends Component {
             state:state.value
         }
     
-        try {
-            await editUser(userID,editObj)
+            let success = await editUser(userID,editObj)
+            console.log(success);
+
+            this.context.dispatch({
+                type:"SUCCESS_UPDATE_USER",
+                payload:success
+            })
+            
     
             let inputForm={
                 ...this.state.formSetting
@@ -229,6 +236,38 @@ export default class EditUser extends Component {
             });
         }
             };
+    
+    handleDeleteUser=async(e)=>{
+        e.preventDefault()
+        let userID = this.context.isAuth.user._id
+        try {
+           let success= await deleteUser(userID)
+            this.context.dispatch({
+                type:"DELETED_USER",
+                payload:success
+            })
+            toast.success('deleted',{
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
+            this.history.push('/')
+        } catch (error) {
+            toast.error(e.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        }
+    }
 
 
     
@@ -263,7 +302,7 @@ export default class EditUser extends Component {
                     draggable
                     pauseOnHover
                     />
-                    <h1>Edit User</h1>
+                    <h1>Edit {this.context.isAuth.user.username}</h1>
                     <form onSubmit={this.onSubmit}>
                         {inputArray.map((element) => {
                             const {
@@ -284,7 +323,13 @@ export default class EditUser extends Component {
                         <ButtonGroup
                         buttonStyle="form-button"
                         disabled={canSubmit}
-                        title='Sign up'
+                        title='Submit Edit'
+                        />
+                        <ButtonGroup
+                        buttonStyle="form-button"
+                        disabled={false}
+                        onClick={this.handleDeleteUser}
+                        title='Delete Account'
                         />
         </form>
         </div>

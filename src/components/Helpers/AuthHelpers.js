@@ -70,3 +70,19 @@ export const editUser= async (id,userInfo)=>{
     throw Error(error.response.data.message)
   }
 }
+
+export const deleteUser = async(id)=>{
+  try {
+    let success = await Axios.delete(`/api/users/delete-user/${id}`,{
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + isAuthenticated(),
+      }})
+      return success
+  } catch (error) {
+    console.log(error);
+    
+    throw Error(error.response.data.message)
+  }
+}

@@ -20,6 +20,24 @@ const reducer = (state, action) => {
           auth:false
         }
       }
+
+      case "SUCCESS_UPDATE_USER":
+        return {
+          ...state,
+          isAuth:{
+            user:action.payload,
+            auth:true
+          },
+        }
+
+        case "DELETED_USER":
+      return{
+        ...state,
+        isAuth:{
+          user:null,
+          auth:false
+        }
+      }
     default:
       return state;
   }

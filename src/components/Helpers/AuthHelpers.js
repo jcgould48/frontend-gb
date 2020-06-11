@@ -57,9 +57,9 @@ export const logout = async () => {
   }
 };
 
-export const editUser= async (id)=>{
+export const editUser= async (id,userInfo)=>{
   try {
-    let success = await Axios.put(`/api/users/update-user/${id}`,{
+    let success = await Axios.put(`/api/users/update-user/${id}`,userInfo,{
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

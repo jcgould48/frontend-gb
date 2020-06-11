@@ -184,10 +184,17 @@ export default class EditUser extends Component {
         e.preventDefault();
     
         let userID = this.context.isAuth.user._id
-        const {email,username}=this.state.formSetting
+        const {email,username,city,state}=this.state.formSetting
+
+        let editObj = {
+            email:email.value,
+            username:username.value,
+            city:city.value,
+            state:state.value
+        }
     
         try {
-            await editUser(userID)
+            await editUser(userID,editObj)
     
             let inputForm={
                 ...this.state.formSetting

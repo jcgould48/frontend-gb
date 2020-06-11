@@ -57,9 +57,9 @@ export const logout = async () => {
   }
 };
 
-export const editUser= async (id)=>{
+export const editUser= async (id,userInfo)=>{
   try {
-    let success = await Axios.put(`/api/users/update-user/${id}`,{
+    let success = await Axios.put(`/api/users/update-user/${id}`,userInfo,{
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -67,6 +67,22 @@ export const editUser= async (id)=>{
       }},)
     return success
   } catch (error) {
+    throw Error(error.response.data.message)
+  }
+}
+
+export const deleteUser = async(id)=>{
+  try {
+    let success = await Axios.delete(`/api/users/delete-user/${id}`,{
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + isAuthenticated(),
+      }})
+      return success
+  } catch (error) {
+    console.log(error);
+    
     throw Error(error.response.data.message)
   }
 }

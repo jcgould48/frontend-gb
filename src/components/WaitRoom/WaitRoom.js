@@ -4,7 +4,7 @@ import {Context} from '../Context/Context'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import ButtonGroup from "../shared/ButtonGroup"
-import {getScores} from "../Helpers/Api"
+import {getScores, updateScore} from "../Helpers/Api"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import minesweeper from '../../images/minesweeper.jpeg'
@@ -18,7 +18,7 @@ export default class WaitRoom extends Component {
         
     state = { 
     formSetting: {
-      wins: null,
+      wins: 0,
         },
       }
        
@@ -30,24 +30,54 @@ export default class WaitRoom extends Component {
         
     // }
 
-    getUserScore = async (req, res) =>{
-        let userID = this.context.isAuth.user._id
-        try{
-          let results= await getScores(userID)
+//     getUserScore = async (req, res) =>{
+//         let userID = this.context.isAuth.user._id
+//         try{
+//           let results= await getScores(userID)
          
 
-        } catch (e) {
-              toast.error(e.message, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
-    }
-}
+//         } catch (e) {
+//               toast.error(e.message, {
+//                 position: "top-center",
+//                 autoClose: 5000,
+//                 hideProgressBar: false,
+//                 closeOnClick: true,
+//                 pauseOnHover: true,
+//                 draggable: true,
+//                 progress: undefined,
+//               });
+//     }
+// }
+
+    // handleP1Win = async (req, res, score) =>{
+    //     // try{
+            
+    //         const {
+    //             wins,
+    //           } = this.state;
+
+    //           let userID = this.context.isAuth.user._id
+    //         let totalWins = wins + score
+        
+    //           let editObj = {
+    //             totalWins,
+    //           };
+
+    //           console.log("editObj--", editObj)
+    //         // let updatedResults = await updateScore(userID, editObj)
+    //         // console.log("these are the updated results" , updatedResults)
+    //     // } catch (e) {
+    //     //     toast.error(e.message, {
+    //     //       position: "top-center",
+    //     //       autoClose: 5000,
+    //     //       hideProgressBar: false,
+    //     //       closeOnClick: true,
+    //     //       pauseOnHover: true,
+    //     //       draggable: true,
+    //     //       progress: undefined,
+    //     //     });
+    //     //   }
+    // }
 
     handlePopulateScore =  async (req, res) => {
       try{
@@ -74,14 +104,14 @@ export default class WaitRoom extends Component {
         return (
             <div>
                 <div>
-                    <h2>Player 1:</h2>
+                    <h2>Player 1: {this.context.isAuth.user.username}</h2>
                     <h1>{this.state.wins}</h1>
                     <ButtonGroup
                     buttonStyle="form-button"
                     title="Retrieve User Score"
                     onClick={this.handlePopulateScore}
                     />
-                    <h2>Player 2:</h2>
+                    <h2>Player 2: Guest</h2>
                 </div>
                 <div className="cards-container">
                     <div className="game-cards" >
@@ -97,6 +127,7 @@ export default class WaitRoom extends Component {
                                 className="minesweeper"
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
+                                
                             >
                                 {/* {this.props.username} */}
                                 Tic Tac Toe
@@ -117,6 +148,7 @@ export default class WaitRoom extends Component {
                                 className="beersweeper"
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
+                                handleP1Win={this.handleP1Win()}
                             >
                                 Play!
                             </NavLink>

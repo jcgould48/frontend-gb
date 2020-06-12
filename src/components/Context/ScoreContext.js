@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { getScores } from "../Helpers/Api";
+import { getScores, updateScore } from "../Helpers/Api";
+
 
 export const ScoreContext = React.createContext();
 
@@ -46,7 +47,13 @@ export class ScoreProvider extends Component {
     scoreDispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
+    handleP1Winner: (score)=>{
+        console.log(score)
+     this.p1WinnerInfo(score)
+    }
   };
+
+
 //This is Where I need tpo import id but how?
   async componentDidMount() {
     // try {
@@ -63,9 +70,20 @@ export class ScoreProvider extends Component {
     // }
   }
 
+  p1WinnerInfo = async (score) =>{
+    try{
+        // let userID = this.context.isAuth.user._id
+        let totalWins =  score
+        let updatedResults = await updateScore(totalWins)
+        console.log("these are the updated results" , updatedResults)
+    } catch (e) {
+          console.log(e);
+      }
+}
+
   render() {
     return (
-      <ScoreContext.Provider value={this.state}>
+      <ScoreContext.Provider value={this.state} >
         {this.props.children}
       </ScoreContext.Provider>
     );

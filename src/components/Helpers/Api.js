@@ -36,16 +36,16 @@ export const resetScore = async (id) => {
   }
 };
 
-export const updateScore = async (id) => {
+export const updateScore = async (id, score) => {
   try {
-    let success = await Axios.put(`/api/games/reset-score/${id}`, 
-    {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + isAuthenticated(),
-      },
-    });
+    let success = await Axios.put(`/api/games/update-score/${id}`, score)
+    // {
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer " + isAuthenticated(),
+    //   },
+    // });
 
     return success.data;
   } catch (e) {

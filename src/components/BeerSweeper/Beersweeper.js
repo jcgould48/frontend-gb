@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import Board from "./Board/Board"
 import BoardHead from "./BoardHead/BoardHead"
+import {Context} from '../Context/Context'
+
 import "./Beersweeper.css"
+import ButtonGroup from "../shared/ButtonGroup"
 
 class Minesweeper extends Component {
+
+  static contextType = Context;
   constructor (){
     super()
  
@@ -15,6 +20,10 @@ class Minesweeper extends Component {
     beers: 10,
     // time: 0,
     openCells: 0,
+    score: {
+      player1:0,
+      player2:0,
+    }
   }
   this.baseState = this.state
 }
@@ -31,6 +40,21 @@ checkForWinner = ()=>{
       status: "winner"
     }, alert("You won!"))
   }
+}
+
+handleWinClick= ()=>{
+  let userID = this.context.isAuth.user._id
+  
+  console.log("000", this.state.score.player1)
+  let newScore = this.state.score.player1 +1
+  this.setState({
+    score: {
+      player1:newScore}
+  });
+  console.log("111", newScore)
+  console.log("222", this.state.score.player1)
+  console.log(this.context)
+  this.context.handleP1Winner(userID,newScore)
 }
 
 componentDidMount(){
@@ -86,6 +110,11 @@ componentDidMount(){
   render() {
     return (
       <div className="minesweeper">
+        <ButtonGroup
+                    buttonStyle="form-button"
+                    title="Winner"
+                    onClick={this.handleWinClick}
+                    />
         <h2>Beer Sweeper</h2>
         <BoardHead 
         // time ={this.state.time} 

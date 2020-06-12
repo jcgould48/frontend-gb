@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { updateScore } from "../Helpers/Api";
 export const Context = React.createContext();
 const reducer = (state, action) => {
   switch (action.type) {
@@ -51,7 +52,26 @@ export  class Provider extends Component {
     dispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
+    handleP1Winner: (id,score)=>{
+      console.log("both......",id,score)
+   this.p1WinnerInfo(id,score)
+  }
   };
+  p1WinnerInfo = async (id,score) =>{
+    try{
+        // let userID = this.context.isAuth.user._id
+        let totalWins =  score
+        let scoreObj = {
+          wins: totalWins
+        }
+        console.log("total wins", totalWins)
+        let updatedResults = await updateScore(id,scoreObj)
+        console.log("these are the updated results" , updatedResults)
+        return updatedResults
+    } catch (e) {
+          console.log(e);
+      }
+}
   render() {
     return (
       <Context.Provider value={this.state}>

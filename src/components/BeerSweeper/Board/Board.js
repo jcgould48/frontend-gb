@@ -152,6 +152,7 @@ class Board extends Component {
     render() {
         let rows = this.state.rows.map((cells, index)=> {
             return (
+                
                 <Row 
                 cells={cells}
                 key={index}

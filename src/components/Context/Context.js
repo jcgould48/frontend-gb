@@ -55,17 +55,18 @@ export  class Provider extends Component {
     handleP1Winner: (id,score)=>{
       console.log("both......",id,score)
    this.p1WinnerInfo(id,score)
-  }
+  },
+  handleP2Winner: (id,score)=>{
+    console.log("bothP@......",id,score)
+ this.p1WinnerInfo(id,score)
+}
   };
   p1WinnerInfo = async (id,score) =>{
     try{
         // let userID = this.context.isAuth.user._id
-        let totalWins =  score
-        let scoreObj = {
-          wins: totalWins
-        }
-        console.log("total wins", totalWins)
-        let updatedResults = await updateScore(id,scoreObj)
+        
+        console.log("totalScoROE wins", score)
+        let updatedResults = await updateScore(id,score)
         console.log("these are the updated results" , updatedResults)
         return updatedResults
     } catch (e) {

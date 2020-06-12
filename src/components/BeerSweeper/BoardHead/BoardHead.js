@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+
 
 
 const BoardHead = props => {
@@ -28,9 +28,5 @@ const BoardHead = props => {
     )
 }
 
-BoardHead.propTypes = {
-    // time: PropTypes.number.isRequired,
-    // flagsUsed: PropTypes.number.isRequired
-  };
 
 export default BoardHead;

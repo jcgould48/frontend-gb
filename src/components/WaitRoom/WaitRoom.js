@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import {Context} from '../Context/Context'
-// import {ScoreContext} from '../Context/ScoreContext'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import ButtonGroup from "../shared/ButtonGroup"
-import {getScores, updateScore} from "../Helpers/Api"
+import {getScores} from "../Helpers/Api"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import minesweeper from '../../images/minesweeper.jpeg'
-import tictactoe from '../../images/tictactoe.jpg'
-import pictionary from '../../images/pictionary.jpeg'
 import './WaitRoom.css'
 
 export default class WaitRoom extends Component {
@@ -22,62 +18,6 @@ export default class WaitRoom extends Component {
         },
       }
        
-    
-    // componentDidMount(){
-    //       let results = this.getUserScore() 
-
-    //     console.log("is this the way?" ,results);
-        
-    // }
-
-//     getUserScore = async (req, res) =>{
-//         let userID = this.context.isAuth.user._id
-//         try{
-//           let results= await getScores(userID)
-         
-
-//         } catch (e) {
-//               toast.error(e.message, {
-//                 position: "top-center",
-//                 autoClose: 5000,
-//                 hideProgressBar: false,
-//                 closeOnClick: true,
-//                 pauseOnHover: true,
-//                 draggable: true,
-//                 progress: undefined,
-//               });
-//     }
-// }
-
-    // handleP1Win = async (req, res, score) =>{
-    //     // try{
-            
-    //         const {
-    //             wins,
-    //           } = this.state;
-
-    //           let userID = this.context.isAuth.user._id
-    //         let totalWins = wins + score
-        
-    //           let editObj = {
-    //             totalWins,
-    //           };
-
-    //           console.log("editObj--", editObj)
-    //         // let updatedResults = await updateScore(userID, editObj)
-    //         // console.log("these are the updated results" , updatedResults)
-    //     // } catch (e) {
-    //     //     toast.error(e.message, {
-    //     //       position: "top-center",
-    //     //       autoClose: 5000,
-    //     //       hideProgressBar: false,
-    //     //       closeOnClick: true,
-    //     //       pauseOnHover: true,
-    //     //       draggable: true,
-    //     //       progress: undefined,
-    //     //     });
-    //     //   }
-    // }
 
     handlePopulateScore =  async (req, res) => {
       try{
@@ -116,7 +56,7 @@ export default class WaitRoom extends Component {
                 <div className="cards-container">
                     <div className="game-cards" >
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={tictactoe} />
+                        <Card.Img variant="top" src="/images/tictactoe.jpg" alt=".." />
                         <Card.Body>
                             <Card.Title>Tic Tac Toe</Card.Title>
                             <Card.Text>
@@ -137,7 +77,7 @@ export default class WaitRoom extends Component {
                     </div>
                     <div className="game-cards">
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={minesweeper} />
+                        <Card.Img variant="top" src="/images/minesweeper.jpeg" alt=".."/>
                         <Card.Body>
                             <Card.Title>BeerSweeper</Card.Title>
                             <Card.Text>
@@ -148,7 +88,6 @@ export default class WaitRoom extends Component {
                                 className="beersweeper"
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
-                                handleP1Win={this.handleP1Win()}
                             >
                                 Play!
                             </NavLink>
@@ -157,7 +96,7 @@ export default class WaitRoom extends Component {
                     </div>
                     <div className="game-cards">
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={pictionary} />
+                        <Card.Img variant="top" src="/images/pictionary.jpeg" alt=".." />
                         <Card.Body>
                             <Card.Title>Pictionary</Card.Title>
                             <Card.Text>
@@ -166,6 +105,21 @@ export default class WaitRoom extends Component {
                             <Button variant="primary">Go somewhere</Button>
                         </Card.Body>
                         </Card>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <div className="cards-container">
+                    <div className="game-cards">
+                        <img  className="blue-card" src="/images/blue-card.jpg" alt=".."/>
+                        <div className="centered">TEST</div>
+                    </div>
+                    <div className="game-cards">
+                        <img className="blue-card" src="/images/blue-card.jpg" alt=".."/>
+                    </div>
+                    <div className="game-cards">
+                        <img className="blue-card" src="/images/blue-card.jpg" alt=".."/>
                     </div>
                 </div>
             </div>

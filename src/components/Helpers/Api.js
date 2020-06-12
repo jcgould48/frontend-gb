@@ -38,6 +38,7 @@ export const resetScore = async (id) => {
 
 export const updateScore = async (id, score) => {
   try {
+    console.log("test Score...", score)
     let success = await Axios.put(`/api/games/update-score/${id}`, score)
     // {
     //   headers: {

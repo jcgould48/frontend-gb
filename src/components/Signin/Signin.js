@@ -154,7 +154,7 @@ export default class SignIn extends Component {
                 ...this.state,
                 formSetting: inputForm,
                 });
-                this.props.history.push('/wait-room')
+                this.props.history.push('/waitroom')
 
 
         } catch (error) {

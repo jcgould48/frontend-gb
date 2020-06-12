@@ -21,8 +21,8 @@ class Minesweeper extends Component {
     // time: 0,
     openCells: 0,
     score: {
-      player1:0,
-      player2:0,
+      wins:0,
+      losses:0,
     }
   }
   this.baseState = this.state
@@ -42,19 +42,45 @@ checkForWinner = ()=>{
   }
 }
 
-handleWinClick= ()=>{
+handleP1WinClick= ()=>{
   let userID = this.context.isAuth.user._id
   
-  console.log("000", this.state.score.player1)
-  let newScore = this.state.score.player1 +1
+  console.log("000", this.state.score.wins)
+  let newScore = this.state.score.wins +1
   this.setState({
     score: {
-      player1:newScore}
+      wins:newScore,
+      losses: this.state.score.losses
+    }
   });
+
+  let total= {
+    wins:newScore,
+    losses: this.state.score.losses
+  }
   console.log("111", newScore)
-  console.log("222", this.state.score.player1)
+  console.log("222", this.state.score.wins)
   console.log(this.context)
-  this.context.handleP1Winner(userID,newScore)
+  this.context.handleP1Winner(userID,total)
+}
+
+
+handleP2WinClick= ()=>{
+  let userID = this.context.isAuth.user._id
+  
+  let newScore = this.state.score.losses +1
+
+  this.setState({
+    score: {
+      wins:this.state.score.wins,
+      losses: newScore
+    }
+  });
+  let total= {
+    wins:this.state.score.wins,
+    losses: newScore
+  }
+  this.context.handleP1Winner(userID,total)
 }
 
 componentDidMount(){
@@ -112,8 +138,13 @@ componentDidMount(){
       <div className="minesweeper">
         <ButtonGroup
                     buttonStyle="form-button"
-                    title="Winner"
-                    onClick={this.handleWinClick}
+                    title="Player 1 Wins"
+                    onClick={this.handleP1WinClick}
+                    />
+        <ButtonGroup
+                    buttonStyle="form-button"
+                    title="Player 2 Wins"
+                    onClick={this.handleP2WinClick}
                     />
         <h2>Beer Sweeper</h2>
         <BoardHead 

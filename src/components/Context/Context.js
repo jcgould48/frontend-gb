@@ -39,6 +39,12 @@ const reducer = (state, action) => {
           auth:false
         }
       }
+
+      case "POPULATE_SCORE":
+      return{
+        ...state,
+        formSetting: action.payload
+      }
     default:
       return state;
   }
@@ -49,15 +55,18 @@ export  class Provider extends Component {
       user: null,
       auth: false,
     },
+    formSetting:{
+      wins:0,
+      losses:0
+    },
+    
     dispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
     handleP1Winner: (id,score)=>{
-      console.log("both......",id,score)
    this.p1WinnerInfo(id,score)
   },
   handleP2Winner: (id,score)=>{
-    console.log("bothP@......",id,score)
  this.p1WinnerInfo(id,score)
 }
   };

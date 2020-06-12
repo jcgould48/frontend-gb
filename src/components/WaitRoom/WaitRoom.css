@@ -1,9 +1,22 @@
-body {
+/* body {
     background-image: url("/images/waitroom-background.jpg");
     background-color: #cccccc;
-   }
+   } */
 
+.players{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    position: relative;
+  text-align: center;
+    color: white;
+}
 
+.navlink{
+color:white;
+background-color: rgb(83, 12, 6);
+}
 
 .cards-container{
     display: flex;
@@ -18,10 +31,3 @@ body {
 .blue-card{
     width: 290px;
 }
-
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }

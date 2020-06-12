@@ -32,6 +32,7 @@ componentDidUpdate(nextProps, nextState){
   if(this.state.status === "running"){
     this.checkForWinner();
   }
+
 }
 
 checkForWinner = ()=>{
@@ -42,10 +43,10 @@ checkForWinner = ()=>{
   }
 }
 
+
 handleP1WinClick= ()=>{
   let userID = this.context.isAuth.user._id
-  
-  console.log("000", this.state.score.wins)
+ let currentScore = this.context.formSetting.wins
   let newScore = this.state.score.wins +1
   this.setState({
     score: {
@@ -58,9 +59,6 @@ handleP1WinClick= ()=>{
     wins:newScore,
     losses: this.state.score.losses
   }
-  console.log("111", newScore)
-  console.log("222", this.state.score.wins)
-  console.log(this.context)
   this.context.handleP1Winner(userID,total)
 }
 
@@ -85,6 +83,12 @@ handleP2WinClick= ()=>{
 
 componentDidMount(){
   this.intervals = [];
+  this.setState({
+    score:{
+        wins: this.context.formSetting.wins,
+        losses: this.context.formSetting.losses,
+    }
+})
 }
 
   // handleTimer = () => {
@@ -136,7 +140,23 @@ componentDidMount(){
   render() {
     return (
       <div className="minesweeper">
-        <ButtonGroup
+        <div className="winners">
+          <div className="player">
+          <img 
+          onClick={this.handleP1WinClick} 
+          style={{width:"80px"}} 
+          src="/images/chip.png"></img>
+          <div>Player one wins</div>
+          </div>
+          <div className="player">
+          <img 
+          onClick={this.handleP2WinClick} 
+          style={{width:"80px"}} 
+          src="/images/chip.png"></img>
+          <div>Player two wins</div>
+          </div>
+        </div>
+        {/* <ButtonGroup
                     buttonStyle="form-button"
                     title="Player 1 Wins"
                     onClick={this.handleP1WinClick}
@@ -146,7 +166,7 @@ componentDidMount(){
                     title="Player 2 Wins"
                     onClick={this.handleP2WinClick}
                     />
-        <h2>Beer Sweeper</h2>
+        <h2>Beer Sweeper</h2> */}
         <BoardHead 
         // time ={this.state.time} 
         // flagsUsed={this.state.flagCount} 

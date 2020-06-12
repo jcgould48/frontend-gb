@@ -1,3 +1,18 @@
+.winners{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  position: relative;
+text-align: center;
+color: white
+}
+.player{
+  display: flex;
+  flex-direction: column;
+}
+
+
 .board-head {
     display: flex;
     flex-direction: row;
@@ -6,6 +21,7 @@
     align-items: center;
     border-left: 1px solid #444;
     border-right: 1px solid #444; 
+  
     
   }
     .board-head .reset,
@@ -17,13 +33,18 @@
       justify-content: center;
       align-items: center; }
     .board-head .reset {
-      font-size: 25px; }
+      background-color: floralwhite;
+      font-size: 25px;
+     }
   
   .board {
+   
     width: 499px;
     height: 499px;
     border: 1px solid #444;
-    border-bottom: none; }
+    border-bottom: none; 
+    background-color: floralwhite;
+  }
     .board .row {
       display: flex;
       height: 50px; }

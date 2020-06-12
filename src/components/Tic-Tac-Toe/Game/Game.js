@@ -37,6 +37,7 @@ export default class Game extends Component {
             stepNumber:history.length
         })
     }
+
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];

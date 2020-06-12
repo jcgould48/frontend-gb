@@ -23,6 +23,7 @@ export default class Navbar extends Component {
 
   render() {
     return (
+      <div>
       <Consumer>
         {(stateOfContext) => {
           const {
@@ -32,13 +33,13 @@ export default class Navbar extends Component {
           return (
             <header>
               <NavLink
-                to="/"
+                to="/waitroom"
                 className="navbar-home"
                 activeStyle={{ fontWeight: "bold" }}
                 activeClassName="selected"
                 exact
               >
-                Home
+                Waitroom
               </NavLink>
               <nav>
                 {user && auth ? (
@@ -49,10 +50,13 @@ export default class Navbar extends Component {
               </nav>
               
             </header>
-
           );
         }}
       </Consumer>
+
+      <div className="line"></div>
+      <div className="leather"></div>
+      </div>
     );
   }
 }

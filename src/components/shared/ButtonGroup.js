@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import classnames from "classnames";
 
 export default function ButtonGroup({ buttonStyle, title, disabled, onClick }) {
@@ -16,8 +16,8 @@ export default function ButtonGroup({ buttonStyle, title, disabled, onClick }) {
   );
 }
 
-ButtonGroup.propTypes = {
-  buttonStyle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
-};
+// ButtonGroup.propTypes = {
+//   buttonStyle: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   disabled: PropTypes.bool.isRequired,
+// };

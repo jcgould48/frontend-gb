@@ -3,6 +3,7 @@ import {Context} from '../Context/Context'
 import { Card, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import ButtonGroup from "../shared/ButtonGroup"
+import Footer from '../Footer/Footer'
 import {getScores} from "../Helpers/Api"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -139,6 +140,7 @@ export default class WaitRoom extends Component {
                         <img className="blue-card" src="/images/blue-card.jpg" alt=".."/>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

@@ -71,6 +71,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59ffffff', e
     top:94px;
     position: absolute;
 }
+h1{
+  font-family: fantasy;
+}
 
 .beer {
   

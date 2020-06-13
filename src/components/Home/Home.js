@@ -5,7 +5,7 @@ export default class Home extends Component {
     render() {
         return (
             <>
-            <h1>Welcome to Git Buzzed</h1>
+            <h1 style={{fontFamily:"fantasy"}}>Welcome to Git Buzzed</h1>
             
             <section>
                 <h2>Have a cold one</h2>

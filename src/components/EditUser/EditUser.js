@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css"
 import InputGroup from '../shared/InputGroup'
 import ButtonGroup from '../shared/ButtonGroup'
 import {editUser,deleteUser} from '../Helpers/AuthHelpers'
+
+import './EditUser.css'
 export default class EditUser extends Component {
     static contextType = Context;
     state={
@@ -326,13 +328,18 @@ export default class EditUser extends Component {
                         title='Submit Edit'
                         />
                         <ButtonGroup
-                        buttonStyle="form-button"
+                        
+                        buttonStyle="form-button-delete"
                         disabled={false}
                         onClick={this.handleDeleteUser}
                         title='Delete Account'
                         />
+            
         </form>
+        <div>
         </div>
+        </div>
+        
         )
     }
 }

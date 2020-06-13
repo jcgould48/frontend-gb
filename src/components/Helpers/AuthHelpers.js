@@ -65,7 +65,7 @@ export const editUser= async (id,userInfo)=>{
         "Content-Type": "application/json",
         Authorization: "Bearer " + isAuthenticated(),
       }},)
-    return success
+    return success.data
   } catch (error) {
     throw Error(error.response.data.message)
   }

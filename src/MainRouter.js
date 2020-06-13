@@ -14,6 +14,7 @@ const Beersweeper = React.lazy(() => import("./components/BeerSweeper/Beersweepe
 const Game = React.lazy(()=>import("./components/Tic-Tac-Toe/Game/Game"))
 
 
+
 export default class MainRouter extends Component {
   render() {
     return (
@@ -42,6 +43,7 @@ export default class MainRouter extends Component {
         </>
         )
       }}
+    
       </Consumer>  
            
           );

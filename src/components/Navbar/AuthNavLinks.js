@@ -19,6 +19,7 @@ componentDidMount(){
       this.context.dispatch({
         type: "SUCCESS_SIGNED_OUT",
       });
+      this.props.history.push('/')
     } catch (e) {
       console.log(e);
     }

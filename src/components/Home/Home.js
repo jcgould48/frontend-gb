@@ -5,10 +5,13 @@ export default class Home extends Component {
     render() {
         return (
             <>
-            <h1 style={{fontFamily:"fantasy"}}>Welcome to Git Buzzed</h1>
+            <br></br>
+            <h1 className="title" style={{fontFamily:"fantasy"}}>Welcome to Git Buzzed</h1>
             
+                <h2 className="title" style={{fontFamily:"fantasy"}}>Have a cold one</h2>
+                <br></br>
+                <img src="/images/deck.png"></img>
             <section>
-                <h2>Have a cold one</h2>
                 <div className="mug">
                     <div className="handle"></div>
                     <div className="beer"></div>

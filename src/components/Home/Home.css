@@ -6,13 +6,18 @@ body {
     text-align: center;
 }
 
+.title{
+  text-align: center;
+  color: white;
+}
+
 section {
      background-color: #e8d877;
 }
 
 h2 {
   background-color:none !important;
-  position: absolute;
+  /* position: absolute; */
   left:20%;
   top:30%;
   font-size:38px;
@@ -22,6 +27,7 @@ h2 {
 
 
 .mug {
+  align-content: center;
     position: absolute;
     width: 135px;
     height:200px;

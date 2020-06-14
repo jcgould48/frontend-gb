@@ -11,7 +11,7 @@ class Board extends Component {
        }
    } 
 
-   componentDidUpdate(nextProps) {
+   componentWillReceiveProps(nextProps) {
     if (
       this.props.openCells > nextProps.openCells ||
       this.props.columns !== nextProps.columns

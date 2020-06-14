@@ -60,7 +60,7 @@ export default class WaitRoom extends Component {
                 <br></br>
                 <div className="players">
                     <h2>Player 1: {this.context.isAuth.user.username}</h2>
-                    <h1>Score: {this.state.wins}</h1>
+                    <h2>Score: {this.state.wins}</h2>
                     <img onClick={this.handlePopulateScore} style={{width:"80px"}} src="/images/chip.png"></img>
                     {/* <ButtonGroup
                     buttonStyle="form-button"
@@ -68,7 +68,7 @@ export default class WaitRoom extends Component {
                     onClick={this.handlePopulateScore}
                     /> */}
                     <h2>Player 2: Guest</h2>
-                    <h1>Score: {this.state.losses}</h1>
+                    <h2>Score: {this.state.losses}</h2>
                 </div>
                 <br></br>
                 <br></br>
@@ -89,7 +89,7 @@ export default class WaitRoom extends Component {
                                 activeClassName="selected" 
                             >
                                 {/* {this.props.username} */}
-                                Tic Tac Toe
+                                Play Now!
                             </NavLink>
                         </Card.Body>
                         </Card>
@@ -108,7 +108,7 @@ export default class WaitRoom extends Component {
                                 activeStyle={{ fontWeight: "bold" }}
                                 activeClassName="selected"
                             >
-                                Play!
+                                Play Now!
                             </NavLink>
                         </Card.Body>
                         </Card>

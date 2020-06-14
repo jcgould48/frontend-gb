@@ -36,9 +36,13 @@ color: white
       background-color: floralwhite;
       font-size: 25px;
      }
-  
+  .whole-board{
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .board {
-   
     width: 499px;
     height: 499px;
     border: 1px solid #444;

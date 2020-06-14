@@ -4,7 +4,7 @@ import BoardHead from "./BoardHead/BoardHead"
 import {Context} from '../Context/Context'
 
 import "./Beersweeper.css"
-import ButtonGroup from "../shared/ButtonGroup"
+// import ButtonGroup from "../shared/ButtonGroup"
 
 class Minesweeper extends Component {
 
@@ -16,9 +16,7 @@ class Minesweeper extends Component {
     status: "waiting",
     rows: 10,
     columns: 10,
-    // flagCount: 10,
     beers: 10,
-    // time: 0,
     openCells: 0,
     score: {
       wins:0,
@@ -112,18 +110,13 @@ componentDidMount(){
     )
   }
 
-  // changeFlagAmount = amount => {
-  //   this.setState({flagCount : this.state.flagCount + amount})
-  // }
-
+ 
   handleCellClick = () =>{
     if(this.state.openCells === 0 && this.state.status !== "running"){
       this.setState({
         status:"running"
       }
-      // , ()=> {
-      //   this.setInterval(this.handleTimer, 1000)
-      // }
+    
       )
     }
     this.setState(prevState=>{
@@ -156,20 +149,9 @@ componentDidMount(){
           <div>Player two wins</div>
           </div>
         </div>
-        {/* <ButtonGroup
-                    buttonStyle="form-button"
-                    title="Player 1 Wins"
-                    onClick={this.handleP1WinClick}
-                    />
-        <ButtonGroup
-                    buttonStyle="form-button"
-                    title="Player 2 Wins"
-                    onClick={this.handleP2WinClick}
-                    />
-        <h2>Beer Sweeper</h2> */}
-        <BoardHead 
-        // time ={this.state.time} 
-        // flagsUsed={this.state.flagCount} 
+    
+        <div className="whole-board">
+        <BoardHead  
         handleReset={this.handleReset}
         status={this.state.status}
         />
@@ -181,8 +163,9 @@ componentDidMount(){
         endGame={this.endGame}
         status={this.state.status}
         onCellClick={this.handleCellClick}
-        // changeFlagAmount={this.changeFlagAmount}
+        
         />
+        </div>
       </div>
     )
   }

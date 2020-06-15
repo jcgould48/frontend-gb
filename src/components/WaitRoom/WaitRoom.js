@@ -25,7 +25,7 @@ export default class WaitRoom extends Component {
       try{
         let userID = this.context.isAuth.user._id
         let results = await getScores(userID)
-        console.log("Poooooooooop",results.wins)
+        console.log(results.wins)
         this.setState({
           wins: results.wins,
           losses: results.losses
@@ -34,7 +34,7 @@ export default class WaitRoom extends Component {
             wins: this.state.wins,
             losses: this.state.losses
         }
-        console.log("POOP", scoreObj)
+        console.log(scoreObj)
        
        this.context.dispatch({
             type:"POPULATE_SCORE",

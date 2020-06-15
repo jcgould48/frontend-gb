@@ -304,7 +304,7 @@ export default class EditUser extends Component {
                     draggable
                     pauseOnHover
                     />
-                    <h1>Edit {this.context.isAuth.user.username}</h1>
+                    <h1>Edit Profile </h1>
                     <form onSubmit={this.onSubmit}>
                         {inputArray.map((element) => {
                             const {

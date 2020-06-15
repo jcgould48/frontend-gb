@@ -84,6 +84,8 @@ export const deleteUser = async(id)=>{
         "Content-Type": "application/json",
         Authorization: "Bearer " + isAuthenticated(),
       }})
+      Cookies.remove("jwt-cookie-expense")
+      Cookies.remove("jwt-cookie-refresh-expense")
       return success
   } catch (error) {
     console.log(error);

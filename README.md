@@ -1,68 +1,84 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Welcome to Git Buzzed!
+### Have a cold one
 
-## Available Scripts
+ In 2020 we all realized the importance the internet has in our lives especially when we are only able to meet digitally.  Git Buzzed was created to provide a space for friends to meet up with the assistance of a preferred video chat service and play some fun and interactive games.
 
-In the project directory, you can run:
+ Currently Tic Tac Toe and Minesweeper are available to play.  We hope to add a larger selection of games in the future and allow players to compete over the internet.
 
-### `npm start`
+ And to keep things interesting we added a drinking component for each game.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ ## Game Instructions- 
 
-### `npm test`
+## Tic Tac Chug -
+Play this game like normal tic tac toe. The loser has to take a drink.  For draws, both players have to take a drink.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## BeerSweeper- 
+The game play is nearly identical to the classic mine sweeper game. Players alternate in revealing squares.  Who ever hits a mine, or a beer glass in this case has to drink. If one player completers the puzzle, the other player has to take two drinks.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*** 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## App Instructions-
+If players want to download this app on their own computers, one person must download both front and back end repositories.
+[Link to the Backend](https://github.com/jcgould48/backend-gb)
+[Link to the Frontend](https://github.com/jcgould48/frontend-gb)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+1. Fork and clone both repositories
+2. npm install in directory
+3. Create .env on the backend file and populate it with the following.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    * SECRET = 'Any string of text'
+    * REFRESH_SECRET = 'Any string of text'
+     * MONGODB_URI = 'Path to your MongoDB storage'
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. On the frontend create .env.development , .env.production files and populate them with the following.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* REACT_APP_API_HOST_ADDRESS=http://localhost:3001
+* REACT_APP_RANDOM_NAME='string'
+* REACT_APP_API_HOST_ADDRESS=TBD
+* REACT_APP_RANDOM_NAME=TBD
+     
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Special thanks to the following tutorials which helped us design the games
 
-### Code Splitting
+[Minesweeper Tutorial courtesy of Milkstarz](https://www.youtube.com/watch?v=tfz1TssUfzM)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[Tic Tac Toe Tutorial courtesy of 'Coding with Basir'](https://www.youtube.com/watch?v=it54tShOsuI)
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+***
+Node Modules included in app:
+        
+    axios
+    bcryptjs
+    cookie-parser
+    cors
+    debug
+    dotenv
+    ejs
+    express
+    express-jwt
+    http-errors
+    jsonwebtoken
+    moment
+    mongoose
+    morgan"
+    validator
+    bootstrap
+    class-names
+    js-cookie
+    jwt-decode
+    react
+    react-bootstrap
+    react-dom
+    react-router-dom
+    react-scripts
+    react-toastify
+  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

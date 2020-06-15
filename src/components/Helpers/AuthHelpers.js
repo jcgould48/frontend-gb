@@ -49,7 +49,12 @@ export const setUserAuth = (jwtToken, dispatch) => {
 
 export const logout = async () => {
   try {
-    await Axios.get("/api/users/logout");
+    await Axios.get("/api/users/logout",{
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + isAuthenticated(),
+      }});
     Cookies.remove("jwt-cookie-expense");
     Cookies.remove("jwt-cookie-refresh-expense");
   } catch (e) {
